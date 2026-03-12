@@ -1,0 +1,21 @@
+packages:
+  "framer-motion": "For premium scroll animations, page transitions, and accordion interactions"
+  "react-hook-form": "For robust contact form state management"
+  "@hookform/resolvers": "For Zod validation integration with react-hook-form"
+  "clsx": "For conditional class merging"
+  "tailwind-merge": "For resolving Tailwind class conflicts"
+
+images:
+  - path: "artifacts/gropilot/public/images/hero-bg.png"
+    description: "Cinematic, deep dark moody workspace, blurred professionals around a laptop, extremely dark gradient overlay, subtle teal and cyan lighting accents, premium agency vibe"
+    aspect_ratio: "16:9"
+  - path: "artifacts/gropilot/public/images/about-img.png"
+    description: "Two professionals working at a dual monitor setup in a modern dark office, cinematic lighting, deep shadows, professional consulting aesthetic"
+    aspect_ratio: "4:3"
+  - path: "artifacts/gropilot/public/images/final-cta-bg.png"
+    description: "Moody photo of a modern home office workspace with window grid panels, deep black overlay, subtle warm light leaks"
+    aspect_ratio: "16:9"
+
+notes:
+  - Using generated API hooks from @workspace/api-client-react for the contact form
+  - Single page application with smooth scrolling to anchor links

@@ -14,3 +14,24 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * Submit a strategy call booking form
+ * @summary Submit contact form
+ */
+
+export const submitContactBodyChallengeMax = 500;
+
+export const SubmitContactBody = zod.object({
+  fullName: zod.string().min(1),
+  email: zod.string().email(),
+  phone: zod.string(),
+  businessType: zod.string(),
+  challenge: zod.string().max(submitContactBodyChallengeMax),
+});
+
+export const SubmitContactResponse = zod.object({
+  success: zod.boolean(),
+  message: zod.string(),
+  id: zod.number().optional(),
+});
