@@ -13,13 +13,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const baseStyles = "inline-flex items-center justify-center whitespace-nowrap rounded-xl font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
     
     const variants = {
-      default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5",
+      default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] hover:-translate-y-0.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]",
       destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
       outline: "border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground",
       secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
       ghost: "hover:bg-accent/10 hover:text-accent",
       link: "text-primary underline-offset-4 hover:underline",
-      gradientCTA: "bg-gradient-to-r from-orange-500 to-brand-pink text-white shadow-lg shadow-brand-pink/25 hover:shadow-xl hover:shadow-brand-pink/40 hover:-translate-y-1"
+      gradientCTA: "bg-gradient-to-r from-blue-600 to-primary text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
     }
 
     const sizes = {

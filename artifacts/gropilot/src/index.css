@@ -25,8 +25,9 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
 
-  --color-brand-teal: #00d4aa;
+  --color-brand-teal: #2563eb;
   --color-brand-blue: #4d8ef0;
+  --color-brand-accent: #60a5fa;
   --color-brand-purple: #7c5cbf;
   --color-brand-pink: #e85d8a;
 }
@@ -42,7 +43,7 @@
   --popover: 237 14% 9%;
   --popover-foreground: 0 0% 100%;
   
-  --primary: 168 100% 41%;      /* #00d4aa - Teal */
+  --primary: 221 83% 53%;       /* #2563eb - Blue */
   --primary-foreground: 240 14% 4%;
   
   --secondary: 217 84% 62%;     /* #4d8ef0 - Blue */
@@ -59,7 +60,7 @@
 
   --border: 237 14% 15%;
   --input: 237 14% 15%;
-  --ring: 168 100% 41%;
+  --ring: 221 83% 53%;
 
   --radius: 0.75rem;
 }
@@ -85,12 +86,38 @@
 
 @layer utilities {
   .text-gradient-teal {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-teal to-teal-200;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-teal to-blue-300;
   }
   .text-gradient-brand {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-brand-pink to-brand-purple;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-primary to-brand-purple;
   }
   .glass-card {
-    @apply bg-card/80 backdrop-blur-md border border-white/5 shadow-2xl shadow-black/50;
+    @apply bg-card/80 backdrop-blur-md border border-primary/20 shadow-[0_0_30px_rgba(37,99,235,0.15)] hover:shadow-[0_0_40px_rgba(37,99,235,0.3)] transition-shadow duration-300;
   }
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+  .glow-blue {
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.3), 0 0 60px rgba(37, 99, 235, 0.1);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.06); }
 }

@@ -1,13 +1,15 @@
+import { Suspense } from "react"
 import { motion } from "framer-motion"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { ArrowRight, Search, Wrench, BarChart2, CheckCircle2, Target, ShieldCheck, Mail } from "lucide-react"
+import { ArrowRight, Search, Wrench, BarChart2, CheckCircle2, Target, ShieldCheck } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import { Accordion } from "@/components/ui/accordion"
+import { Hero3D } from "@/components/ui/Hero3D"
 import { useSubmitContact } from "@workspace/api-client-react"
 import { useToast } from "@/hooks/use-toast"
 
@@ -80,7 +82,7 @@ export function Landing() {
 
       <main>
         {/* SECTION 1: HERO */}
-        <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center justify-center min-h-[90vh]">
+        <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center justify-center min-h-[90vh] overflow-hidden">
           {/* Background Image with Dark Overlay */}
           <div className="absolute inset-0 z-0">
             <img 
@@ -91,30 +93,44 @@ export function Landing() {
             <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background"></div>
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div 
-              initial="hidden" animate="visible" variants={staggerContainer}
-              className="max-w-4xl mx-auto flex flex-col items-center"
-            >
-              <motion.div variants={fadeInUp} className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase">
-                Systems-Driven Growth Agency
+          {/* Animated background glows */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none animate-pulse-slow" style={{ animationDelay: "1.5s" }}></div>
+
+          {/* 3D Element */}
+          <Suspense fallback={null}>
+            <Hero3D />
+          </Suspense>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="lg:max-w-[55%]">
+              <motion.div 
+                initial="hidden" animate="visible" variants={staggerContainer}
+                className="flex flex-col items-start text-left lg:text-left"
+              >
+                <motion.div variants={fadeInUp} className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase">
+                  Systems-Driven Growth Agency
+                </motion.div>
+                
+                <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-white leading-[1.05] mb-8">
+                  We Build <span className="text-primary">Client-Generating</span> Systems for Business Owners
+                </motion.h1>
+                
+                <motion.p variants={fadeInUp} className="text-lg md:text-xl text-muted-foreground mb-12 max-w-xl leading-relaxed">
+                  Turn your online presence into a predictable source of leads — without cold outreach or guesswork.
+                </motion.p>
+                
+                <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
+                  <Button size="lg-pill" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="text-lg group shadow-lg shadow-primary/30">
+                    Book a Free Strategy Call 
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                  <Button size="lg-pill" variant="outline" onClick={() => document.getElementById("process")?.scrollIntoView({ behavior: "smooth" })} className="text-lg border-white/20 text-white/80 hover:bg-white/5">
+                    See How It Works
+                  </Button>
+                </motion.div>
               </motion.div>
-              
-              <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-display font-extrabold text-white leading-[1.1] mb-8">
-                We Build <span className="text-primary">Client-Generating</span> Systems for Business Owners
-              </motion.h1>
-              
-              <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-muted-foreground mb-12 max-w-2xl leading-relaxed">
-                Turn your online presence into a predictable source of leads — without cold outreach or guesswork.
-              </motion.p>
-              
-              <motion.div variants={fadeInUp}>
-                <Button size="lg-pill" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="text-lg group">
-                  Book a Free Strategy Call 
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </motion.div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -431,42 +447,37 @@ export function Landing() {
                 {
                   id: "faq-1",
                   title: "What exactly is a \"client-generating system\"?",
-                  content: "A complete, integrated set of digital strategies that work together automatically to attract your ideal prospects, build trust and authority, and convert them into qualified leads or sales."
+                  content: "A client-generating system is a complete, done-for-you infrastructure that consistently attracts, nurtures, and converts strangers into paying clients. It combines traffic, authority, and conversion elements into one cohesive machine — so you stop relying on referrals or cold outreach and start getting predictable leads on autopilot."
                 },
                 {
                   id: "faq-2",
                   title: "How quickly will I see results?",
-                  content: "While some quick wins can happen in the first 30 days (like conversion rate improvements on existing traffic), a comprehensive system typically takes 60–90 days to gain meaningful, predictable traction."
+                  content: "Most clients begin seeing measurable lead growth within 30–60 days of launch. Full system optimization typically takes 90 days. Unlike one-off campaigns, our systems compound over time — meaning results improve month after month, not plateau."
                 },
                 {
                   id: "faq-3",
                   title: "I've tried agencies before and been burned. Why is GroPilot different?",
-                  content: "We don't sell isolated tactics like 'just Facebook ads' or 'just SEO' because they rarely work alone. We build holistic systems. Plus, we tie our success to your actual pipeline growth, not vanity metrics."
+                  content: "Most agencies sell you isolated services — a few ads here, some social posts there — with no cohesive strategy. GroPilot builds complete, bundled systems designed around one goal: getting you clients. We're strategy-first, results-obsessed, and we measure success by leads and revenue — not vanity metrics."
                 },
                 {
                   id: "faq-4",
-                  title: "Do I need a big budget to work with GroPilot?",
-                  content: "We design solutions scaled to your current growth stage. While building a premium system requires investment, we focus strictly on high-ROI activities that pay for themselves through new client acquisition."
+                  title: "Will I have to do a lot of work myself?",
+                  content: "Our systems are done for you. We handle strategy, build, and optimization. Your involvement is minimal — typically a short onboarding session and periodic check-ins. We do the heavy lifting so you can focus on serving your clients."
                 },
                 {
                   id: "faq-5",
-                  title: "Will I have to do a lot of work myself?",
-                  content: "Minimal. Our goal is to take marketing off your plate. We handle the heavy lifting — strategy, build-out, and optimization. We only need your input for high-level approvals and deep industry expertise."
+                  title: "What types of businesses do you work with?",
+                  content: "We specialize in coaches, consultants, service providers, and local business owners who have a proven offer but struggle to get consistent, qualified leads online. If you're great at what you do but your online presence isn't reflecting that — we're built for you."
                 },
                 {
                   id: "faq-6",
-                  title: "What types of businesses do you work with?",
-                  content: "We specialize in high-ticket service businesses, coaches, consultants, B2B SaaS, and established local service providers who need a predictable flow of quality leads."
+                  title: "What does the free strategy call include?",
+                  content: "The free 30-minute strategy call is a genuine diagnostic session — not a sales pitch. We'll audit your current online presence, identify the biggest gaps in your client acquisition system, and map out a clear roadmap. You'll leave with actionable insights whether you work with us or not."
                 },
                 {
                   id: "faq-7",
-                  title: "What does the free strategy call include?",
-                  content: "It's a zero-pressure 45-minute deep dive into your current acquisition model. We'll identify bottlenecks, map out what a custom system would look like for you, and give you an actionable roadmap whether you hire us or not."
-                },
-                {
-                  id: "faq-8",
                   title: "How do you measure success?",
-                  content: "We track what impacts your bottom line: cost per qualified lead, sales pipeline velocity, conversion rates, and total return on investment. If it doesn't lead to revenue, we don't count it as a win."
+                  content: "We track what actually matters: qualified leads generated, conversion rates, cost per acquisition, and revenue impact. We provide transparent reporting so you always know exactly what's working. Our clients average 3.2x lead growth — and we hold ourselves accountable to real numbers."
                 }
               ]} 
               className="mb-16"

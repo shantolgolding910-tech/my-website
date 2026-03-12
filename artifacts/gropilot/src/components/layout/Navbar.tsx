@@ -33,9 +33,7 @@ export function Navbar() {
           
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded bg-primary flex items-center justify-center shadow-lg shadow-primary/20 group-hover:shadow-primary/40 transition-shadow">
-              <div className="w-3 h-3 bg-background rounded-sm" />
-            </div>
+            <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="GroPilot" className="w-9 h-9 rounded-md object-cover" />
             <span className="font-display font-bold text-xl tracking-wide text-white">
               GroPilot
             </span>
