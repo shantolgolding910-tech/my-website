@@ -20,11 +20,7 @@ export function Footer() {
               Systems-driven growth for business owners. We build predictable paths from visibility to revenue.
             </p>
             <div className="flex items-center gap-4">
-              {[Linkedin, Twitter, Instagram, Facebook].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300">
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
+              
             </div>
           </div>
 
@@ -32,7 +28,7 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-white mb-6">Company</h4>
             <ul className="space-y-4">
-              {['About Us', 'Our Process', 'Solutions', 'Case Studies'].map((item) => (
+              {['About Us', 'Our Process', 'Solutions'].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-muted-foreground hover:text-primary transition-colors">{item}</a>
                 </li>
@@ -44,7 +40,7 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-white mb-6">Resources</h4>
             <ul className="space-y-4">
-              {['Blog', 'Growth Guide', 'FAQ', 'Contact'].map((item) => (
+              {['FAQ', 'Contact'].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-muted-foreground hover:text-primary transition-colors">{item}</a>
                 </li>
@@ -52,18 +48,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Links 3 */}
-          <div>
-            <h4 className="font-display font-bold text-white mb-6">Legal</h4>
-            <ul className="space-y-4">
-              {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">{item}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+           
+       
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
