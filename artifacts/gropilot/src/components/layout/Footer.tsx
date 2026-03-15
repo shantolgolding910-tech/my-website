@@ -48,8 +48,8 @@ export function Footer() {
             </ul>
           </div>
 
-           
-       
+          
+        </div>
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
